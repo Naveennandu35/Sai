@@ -3,191 +3,344 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sign in · LeelaPrasad Super Market</title>
-  <meta name="description" content="Sign in to your LeelaPrasad Super Market account to track orders, reorder favourites and unlock member-only deals." />
+  <title>LeelaPrasad Super Market</title>
+  <meta name="description" content="LeelaPrasad Super Market — groceries, household essentials and fresh produce delivered to your door." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f7a4e'/%3E%3Cpath d='M9 12h14l-1.4 10.2a2 2 0 0 1-2 1.8H12.4a2 2 0 0 1-2-1.8L9 12Z' fill='none' stroke='%23fff' stroke-width='2' stroke-linejoin='round'/%3E%3Cpath d='M12.5 12a3.5 3.5 0 0 1 7 0' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="auth">
+  <main class="app">
 
-    <!-- ── Brand panel ─────────────────────────────────────────── -->
-    <section class="brand" aria-label="About LeelaPrasad Super Market">
-      <div class="brand__glow" aria-hidden="true"></div>
+    <!-- ─── Login view ─── -->
+    <section id="view-login" class="view active auth" aria-labelledby="loginTitle">
+      <section class="brand" aria-label="About LeelaPrasad Super Market">
+        <div class="brand__glow" aria-hidden="true"></div>
 
-      <a class="logo" href="#" aria-label="LeelaPrasad Super Market home">
-        <span class="logo__mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4.5 8h15l-1.3 11.2a2 2 0 0 1-2 1.8H7.8a2 2 0 0 1-2-1.8L4.5 8Z" />
-            <path d="M8.5 8a3.5 3.5 0 0 1 7 0" />
-          </svg>
-        </span>
-        <span class="logo__text">
-          <strong>LeelaPrasad Super Market</strong>
-          <small>Departmental Store</small>
-        </span>
-      </a>
+        <a class="logo" href="#" aria-label="LeelaPrasad Super Market home">
+          <span class="logo__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4.5 8h15l-1.3 11.2a2 2 0 0 1-2 1.8H7.8a2 2 0 0 1-2-1.8L4.5 8Z" />
+              <path d="M8.5 8a3.5 3.5 0 0 1 7 0" />
+            </svg>
+          </span>
+          <span class="logo__text">
+            <strong>LeelaPrasad Super Market</strong>
+            <small>Departmental Store</small>
+          </span>
+        </a>
 
-      <div class="brand__body">
-        <p class="brand__eyebrow">Open daily · 7 am – 11 pm</p>
-        <h1>Everything your home needs, one login away.</h1>
-        <p class="brand__lede">
-          Groceries, household essentials and fresh produce from your neighbourhood store —
-          now with delivery in under two hours.
-        </p>
+        <div class="brand__body">
+          <p class="brand__eyebrow">Open daily · 7 am – 11 pm</p>
+          <h1>Everything your home needs, one login away.</h1>
+          <p class="brand__lede">
+            Groceries, household essentials and fresh produce from your neighbourhood store —
+            now with delivery in under two hours.
+          </p>
 
-        <ul class="perks">
-          <li>
-            <span class="perks__tick" aria-hidden="true">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.4 3 3 6-6.8" /></svg>
-            </span>
-            Track orders and reorder your usual basket
-          </li>
-          <li>
-            <span class="perks__tick" aria-hidden="true">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.4 3 3 6-6.8" /></svg>
-            </span>
-            Member-only prices on 1,200+ everyday items
-          </li>
-          <li>
-            <span class="perks__tick" aria-hidden="true">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.4 3 3 6-6.8" /></svg>
-            </span>
-            One wallet for in-store and online checkout
-          </li>
-        </ul>
-      </div>
-
-      <div class="brand__proof">
-        <div class="avatars" aria-hidden="true">
-          <span>AR</span><span>SK</span><span>MB</span><span>+</span>
+          <ul class="perks">
+            <li>
+              <span class="perks__tick" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.4 3 3 6-6.8" /></svg>
+              </span>
+              Track orders and reorder your usual basket
+            </li>
+            <li>
+              <span class="perks__tick" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.4 3 3 6-6.8" /></svg>
+              </span>
+              Member-only prices on 1,200+ everyday items
+            </li>
+            <li>
+              <span class="perks__tick" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.4 3 3 6-6.8" /></svg>
+              </span>
+              One wallet for in-store and online checkout
+            </li>
+          </ul>
         </div>
-        <p><strong>40,000+</strong> local families shop with us every week.</p>
+
+        <div class="brand__proof">
+          <div class="avatars" aria-hidden="true">
+            <span>AR</span><span>SK</span><span>MB</span><span>+</span>
+          </div>
+          <p><strong>40,000+</strong> local families shop with us every week.</p>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="loginTitle">
+        <div class="panel__inner">
+          <div class="panel__head">
+            <h2 id="loginTitle">Welcome back</h2>
+            <p>Sign in to continue shopping with LeelaPrasad Super Market.</p>
+          </div>
+
+          <div id="alert" class="alert" role="status" aria-live="polite"></div>
+
+          <form id="loginForm" novalidate>
+            <div class="field" id="identifierField">
+              <label for="identifier">Email or mobile number</label>
+              <div class="control">
+                <svg class="control__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="14" rx="3" />
+                  <path d="m3.8 7 7.2 5.4a2 2 0 0 0 2 0L20.2 7" />
+                </svg>
+                <input
+                  id="identifier" name="identifier" type="text" inputmode="email" autocomplete="username"
+                  placeholder="you@example.com or 98765 43210" aria-describedby="identifierError" required
+                />
+              </div>
+              <p class="field__error" id="identifierError"></p>
+            </div>
+
+            <div class="field" id="passwordField">
+              <div class="field__row">
+                <label for="password">Password</label>
+                <a href="#" class="link" id="forgotLink">Forgot password?</a>
+              </div>
+              <div class="control">
+                <svg class="control__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="4" y="10" width="16" height="10" rx="2.5" />
+                  <path d="M8 10V7.5a4 4 0 0 1 8 0V10" />
+                </svg>
+                <input id="password" name="password" type="password" autocomplete="current-password"
+                  placeholder="Enter your password" aria-describedby="passwordError capsHint" required />
+                <button type="button" class="control__toggle" id="togglePassword" aria-label="Show password" aria-pressed="false" title="Show password">
+                  <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" />
+                    <circle cx="12" cy="12" r="3.2" />
+                  </svg>
+                  <svg class="icon-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 3l18 18" />
+                    <path d="M10.6 6.1A9.7 9.7 0 0 1 12 6c6 0 9.5 6 9.5 6a17 17 0 0 1-3 3.6" />
+                    <path d="M6.2 7.8A17.6 17.6 0 0 0 2.5 12s3.5 6 9.5 6a9.4 9.4 0 0 0 3.7-.75" />
+                    <path d="M9.9 10a3 3 0 0 0 4.2 4.2" />
+                  </svg>
+                </button>
+              </div>
+              <p class="field__error" id="passwordError"></p>
+              <p class="caps-hint" id="capsHint" hidden>Caps Lock is on.</p>
+            </div>
+
+            <div class="options">
+              <label class="check">
+                <input type="checkbox" name="remember" id="remember" />
+                <span>Keep me signed in</span>
+              </label>
+              <button type="button" class="link link--button" id="demoBtn">Use demo account</button>
+            </div>
+
+            <button type="submit" class="btn btn--primary" id="submitBtn">
+              <span class="spinner" aria-hidden="true"></span>
+              <span class="btn__label">Sign in</span>
+            </button>
+          </form>
+
+          <div class="divider"><span>or continue with</span></div>
+
+          <div class="socials">
+            <button type="button" class="btn btn--social" data-provider="Google">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#4285F4" d="M23.5 12.27c0-.79-.07-1.54-.2-2.27H12v4.51h6.47a5.53 5.53 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.55-5.17 3.55-8.86Z" />
+                <path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.95-2.91l-3.88-3c-1.08.72-2.45 1.15-4.07 1.15-3.13 0-5.78-2.11-6.73-4.96H1.28v3.09A12 12 0 0 0 12 24Z" />
+                <path fill="#FBBC05" d="M5.27 14.28a7.2 7.2 0 0 1 0-4.56V6.63H1.28a12 12 0 0 0 0 10.74l3.99-3.09Z" />
+                <path fill="#EA4335" d="M12 4.75c1.76 0 3.35.61 4.6 1.8l3.44-3.44A11.98 11.98 0 0 0 12 0 12 12 0 0 0 1.28 6.63l3.99 3.09C6.22 6.87 8.87 4.75 12 4.75Z" />
+              </svg>
+              <span>Google</span>
+            </button>
+            <button type="button" class="btn btn--social" data-provider="Apple">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.08ZM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25Z" />
+              </svg>
+              <span>Apple</span>
+            </button>
+          </div>
+
+          <p class="signup">
+            New to LeelaPrasad Super Market? <a href="#" class="link">Create an account</a>
+          </p>
+        </div>
+
+        <footer class="panel__foot">
+          <span>© <span id="year">2026</span> LeelaPrasad Super Market</span>
+          <nav aria-label="Legal">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Help</a>
+          </nav>
+        </footer>
+      </section>
+    </section>
+
+    <!-- ─── Home view ─── -->
+    <section id="view-home" class="view home" hidden>
+      <header class="app-header">
+        <button class="nav__menu" id="openCart" aria-label="Your shopping cart">
+          <span class="nav__icon">🛒</span>
+          <span class="nav__label">Cart <span class="cart-count" id="headerCartCount">0</span></span>
+        </button>
+        <a class="nav__logo" href="#" id="homeLogo">LeelaPrasad Super Market</a>
+        <div class="nav__user">
+          <span class="nav__welcome">Hi, <span id="userDisplayName"></span></span>
+          <button class="nav__signout" id="signoutBtn">Sign out</button>
+        </div>
+      </header>
+
+      <div class="home-body">
+        <div class="hero">
+          <div class="hero__content">
+            <p class="hero__kicker">Fresh deals this week</p>
+            <h1 class="hero__title">Fill your basket, <br />save more every day.</h1>
+            <p class="hero__lede">Groceries, staples, dairy and fresh produce — delivered in under two hours.</p>
+            <button class="btn btn--primary hero__cta" id="shopAllBtn">Start shopping</button>
+          </div>
+          <div class="hero__badge" aria-hidden="true">🥬 🍎 🥛 🍞 🧺</div>
+        </div>
+
+        <h2 class="section__title">Fresh picks for you</h2>
+        <div class="products-grid" id="productsGrid"></div>
       </div>
     </section>
 
-    <!-- ── Login panel ─────────────────────────────────────────── -->
-    <section class="panel" aria-labelledby="loginTitle">
-      <div class="panel__inner">
-
-        <div class="panel__head">
-          <h2 id="loginTitle">Welcome back</h2>
-          <p>Sign in to continue shopping with LeelaPrasad Super Market.</p>
+    <!-- ─── Cart drawer ─── -->
+    <div id="overlay" class="overlay" hidden></div>
+    <aside id="cartDrawer" class="cart-drawer" hidden aria-modal="true" role="dialog" aria-label="Shopping cart">
+      <div class="cart-drawer__inner">
+        <div class="cart-drawer__header">
+          <h2 class="cart-drawer__title">Your cart</h2>
+          <button class="cart-drawer__close" id="closeCart" aria-label="Close cart">✕</button>
         </div>
 
-        <div id="alert" class="alert" role="status" aria-live="polite"></div>
-
-        <form id="loginForm" novalidate>
-          <!-- Email / mobile -->
-          <div class="field" id="identifierField">
-            <label for="identifier">Email or mobile number</label>
-            <div class="control">
-              <svg class="control__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="5" width="18" height="14" rx="3" />
-                <path d="m3.8 7 7.2 5.4a2 2 0 0 0 2 0L20.2 7" />
-              </svg>
-              <input
-                id="identifier"
-                name="identifier"
-                type="text"
-                inputmode="email"
-                autocomplete="username"
-                placeholder="you@example.com or 98765 43210"
-                aria-describedby="identifierError"
-                required
-              />
-            </div>
-            <p class="field__error" id="identifierError"></p>
+        <div class="cart-drawer__body" id="cartBody">
+          <div class="cart-empty" id="cartEmpty">
+            <p class="cart-empty__text">Your cart is empty.</p>
+            <p class="cart-empty__sub">Add items from the store to get started.</p>
           </div>
 
-          <!-- Password -->
-          <div class="field" id="passwordField">
-            <div class="field__row">
-              <label for="password">Password</label>
-              <a href="#" class="link" id="forgotLink">Forgot password?</a>
+          <div class="cart-items" id="cartItems"></div>
+
+          <div class="cart-summary" id="cartSummary">
+            <div class="cart-summary__row">
+              <span>Items</span>
+              <span id="summaryItems">0</span>
             </div>
-            <div class="control">
-              <svg class="control__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="4" y="10" width="16" height="10" rx="2.5" />
-                <path d="M8 10V7.5a4 4 0 0 1 8 0V10" />
-              </svg>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autocomplete="current-password"
-                placeholder="Enter your password"
-                aria-describedby="passwordError capsHint"
-                required
-              />
-              <button type="button" class="control__toggle" id="togglePassword" aria-label="Show password" aria-pressed="false" title="Show password">
-                <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" />
-                  <circle cx="12" cy="12" r="3.2" />
-                </svg>
-                <svg class="icon-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M3 3l18 18" />
-                  <path d="M10.6 6.1A9.7 9.7 0 0 1 12 6c6 0 9.5 6 9.5 6a17 17 0 0 1-3 3.6" />
-                  <path d="M6.2 7.8A17.6 17.6 0 0 0 2.5 12s3.5 6 9.5 6a9.4 9.4 0 0 0 3.7-.75" />
-                  <path d="M9.9 10a3 3 0 0 0 4.2 4.2" />
-                </svg>
-              </button>
+            <div class="cart-summary__row">
+              <span>Subtotal</span>
+              <span id="summarySubtotal">₹0</span>
             </div>
-            <p class="field__error" id="passwordError"></p>
-            <p class="caps-hint" id="capsHint" hidden>Caps Lock is on.</p>
+            <div class="cart-summary__row cart-summary__row--total">
+              <span>Total</span>
+              <span id="summaryTotal">₹0</span>
+            </div>
+            <button class="btn btn--primary cart__checkout" id="checkoutBtn" disabled>Proceed to checkout</button>
           </div>
-
-          <!-- Remember / demo -->
-          <div class="options">
-            <label class="check">
-              <input type="checkbox" name="remember" id="remember" />
-              <span>Keep me signed in</span>
-            </label>
-            <button type="button" class="link link--button" id="demoBtn">Use demo account</button>
-          </div>
-
-          <button type="submit" class="btn btn--primary" id="submitBtn">
-            <span class="spinner" aria-hidden="true"></span>
-            <span class="btn__label">Sign in</span>
-          </button>
-        </form>
-
-        <div class="divider"><span>or continue with</span></div>
-
-        <div class="socials">
-          <button type="button" class="btn btn--social" data-provider="Google">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="#4285F4" d="M23.5 12.27c0-.79-.07-1.54-.2-2.27H12v4.51h6.47a5.53 5.53 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.55-5.17 3.55-8.86Z" />
-              <path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.95-2.91l-3.88-3c-1.08.72-2.45 1.15-4.07 1.15-3.13 0-5.78-2.11-6.73-4.96H1.28v3.09A12 12 0 0 0 12 24Z" />
-              <path fill="#FBBC05" d="M5.27 14.28a7.2 7.2 0 0 1 0-4.56V6.63H1.28a12 12 0 0 0 0 10.74l3.99-3.09Z" />
-              <path fill="#EA4335" d="M12 4.75c1.76 0 3.35.61 4.6 1.8l3.44-3.44A11.98 11.98 0 0 0 12 0 12 12 0 0 0 1.28 6.63l3.99 3.09C6.22 6.87 8.87 4.75 12 4.75Z" />
-            </svg>
-            <span>Google</span>
-          </button>
-          <button type="button" class="btn btn--social" data-provider="Apple">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.08ZM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25Z" />
-            </svg>
-            <span>Apple</span>
-          </button>
         </div>
-
-        <p class="signup">
-          New to LeelaPrasad Super Market? <a href="#" class="link">Create an account</a>
-        </p>
       </div>
+    </aside>
 
-      <footer class="panel__foot">
-        <span>© <span id="year">2026</span> LeelaPrasad Super Market</span>
-        <nav aria-label="Legal">
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-          <a href="#">Help</a>
-        </nav>
-      </footer>
+    <!-- ─── Checkout view ─── -->
+    <section id="view-checkout" class="view" hidden>
+      <header class="app-header app-header--thin">
+        <button class="nav__menu" id="backToHomeFromCheckout" aria-label="Back to store">← Store</button>
+        <a class="nav__logo" href="#" id="checkoutLogo">LeelaPrasad Super Market</a>
+        <div class="nav__user">
+          <span class="nav__welcome">Checkout</span>
+        </div>
+      </header>
+
+      <div class="checkout-body">
+        <div class="checkout-column">
+          <h2 class="checkout__title">Delivery details</h2>
+          <form id="checkoutForm" novalidate>
+            <div class="field">
+              <label for="checkoutName">Full name</label>
+              <input id="checkoutName" name="name" type="text" placeholder="Leela Prasad" required />
+              <p class="field__error" id="checkoutNameError"></p>
+            </div>
+            <div class="field">
+              <label for="checkoutAddress">Address</label>
+              <input id="checkoutAddress" name="address" type="text" placeholder="123 Main Street, Colony" required />
+              <p class="field__error" id="checkoutAddressError"></p>
+            </div>
+            <div class="field">
+              <label for="checkoutPhone">Mobile number</label>
+              <input id="checkoutPhone" name="phone" type="tel" inputmode="tel" placeholder="98765 43210" required />
+              <p class="field__error" id="checkoutPhoneError"></p>
+            </div>
+            <div class="field">
+              <label for="checkoutPincode">Pincode</label>
+              <input id="checkoutPincode" name="pincode" type="text" inputmode="numeric" placeholder="500001" required />
+              <p class="field__error" id="checkoutPincodeError"></p>
+            </div>
+
+            <h2 class="checkout__title checkout__title--sub">Payment method</h2>
+            <div class="field field--radio">
+              <label class="radio">
+                <input type="radio" name="payment" value="cod" checked />
+                <span>Cash on delivery</span>
+              </label>
+              <label class="radio">
+                <input type="radio" name="payment" value="upi" />
+                <span>UPI / QR payment</span>
+              </label>
+              <label class="radio">
+                <input type="radio" name="payment" value="card" />
+                <span>Debit / Credit card</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn--primary checkout__place" id="placeOrderBtn">
+              <span class="spinner" aria-hidden="true"></span>
+              <span class="btn__label">Place order — <span id="placeOrderTotal">₹0</span></span>
+            </button>
+          </form>
+        </div>
+
+        <div class="checkout-column checkout-column--summary">
+          <div class="order-card">
+            <h3 class="order-card__title">Order summary</h3>
+            <div class="order-card__items" id="checkoutOrderItems"></div>
+            <div class="order-card__divider"></div>
+            <div class="order-card__row">
+              <span>Subtotal</span>
+              <span id="checkoutSubtotal">₹0</span>
+            </div>
+            <div class="order-card__row">
+              <span>Delivery</span>
+              <span class="text--muted">Free</span>
+            </div>
+            <div class="order-card__row order-card__row--total">
+              <span>Total</span>
+              <span id="checkoutTotal">₹0</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <!-- ─── Order confirmation view ─── -->
+    <section id="view-confirmation" class="view confirmation" hidden>
+      <div class="confirmation-card">
+        <div class="confirmation__icon" aria-hidden="true">✔</div>
+        <h1 class="confirmation__title">Order placed!</h1>
+        <p class="confirmation__lede">Thank you for shopping with LeelaPrasad Super Market.</p>
+
+        <div class="confirmation__meta">
+          <p><strong>Order number:</strong> <span id="confirmOrderId">—</span></p>
+          <p><strong>Placed on:</strong> <span id="confirmDate">—</span></p>
+          <p><strong>Total:</strong> <span id="confirmTotal">₹0</span></p>
+        </div>
+
+        <h3 class="confirmation__subtitle">Your items</h3>
+        <div class="confirmation__items" id="confirmItems"></div>
+
+        <div class="confirmation__actions">
+          <button class="btn btn--primary confirmation__cta" id="continueShopping">Continue shopping</button>
+          <button class="btn btn--outline" id="viewOrderBtn">View order</button>
+        </div>
+      </div>
+    </section>
+
   </main>
-
   <script src="script.js"></script>
 </body>
 </html>
