@@ -24,6 +24,70 @@
     { id: 'p12', name: 'Potatoes (1 kg)', cat: 'Vegetables', price: 22, emoji: '🥔' },
   ];
 
+  /* ── Daily essentials grocery list (6 categories) ───────── */
+
+  const ESSENTIALS = [
+    {
+      category: 'Grains & Staples',
+      items: [
+        'Wheat Flour (Atta) 5 kg', 'Rice (Basmati) 5 kg', 'Rice (Sona Masoori) 5 kg',
+        'Toor Dal 1 kg', 'Moong Dal 1 kg', 'Masoor Dal 1 kg', 'Chana Dal 1 kg', 'Urad Dal 1 kg',
+        'Semolina (Suji/Rava) 1 kg', 'Poha (Flattened Rice) 1 kg', 'Vermicelli (Semiya) 500 g',
+        'Besan (Gram Flour) 1 kg', 'Corn Flour 500 g', 'Oats 1 kg', 'Quinoa 500 g'
+      ]
+    },
+    {
+      category: 'Cooking Essentials',
+      items: [
+        'Sunflower Oil 1 L', 'Groundnut Oil 1 L', 'Mustard Oil 1 L', 'Coconut Oil 500 ml',
+        'Ghee 1 L', 'Salt (Iodized) 1 kg', 'Sugar 1 kg', 'Jaggery (Gur) 500 g',
+        'Turmeric Powder 200 g', 'Red Chili Powder 200 g', 'Coriander Powder 200 g',
+        'Cumin Powder 100 g', 'Garam Masala 200 g', 'Sambar Powder 200 g', 'Chaat Masala 100 g',
+        'Whole Spices (Cinnamon, Cardamom, Cloves, Bay Leaf)', 'Ginger-Garlic Paste 200 g',
+        'Tamarind 200 g', 'Asafoetida (Hing) 50 g'
+      ]
+    },
+    {
+      category: 'Fresh Produce',
+      items: [
+        'Onion 1 kg', 'Potato 1 kg', 'Tomato 1 kg', 'Garlic 200 g', 'Ginger 200 g',
+        'Green Chili 200 g', 'Coriander Leaves 1 bunch', 'Mint Leaves 1 bunch',
+        'Spinach (Palak) 1 bunch', 'Fenugreek (Methi) 1 bunch', 'Banana 1 dozen',
+        'Apple 1 kg', 'Orange 1 kg', 'Lemon 500 g', 'Coconut 2 pcs', 'Carrot 1 kg',
+        'Beetroot 500 g', 'Cauliflower 1 pc', 'Cabbage 1 pc', 'Beans 500 g', 'Cucumber 500 g',
+        'Bottle Gourd (Lauki) 1 pc', 'Ridge Gourd (Turai) 500 g'
+      ]
+    },
+    {
+      category: 'Dairy & Breakfast',
+      items: [
+        'Milk 1 L (daily)', 'Curd (Yogurt) 500 g', 'Butter 200 g', 'Paneer 200 g',
+        'Cheese 200 g', 'Eggs 1 dozen', 'Brown Bread 400 g', 'White Bread 400 g',
+        'Pav (Dinner Rolls) 1 packet', 'Oats 500 g', 'Cornflakes 500 g', 'Muesli 500 g',
+        'Tea Powder 250 g', 'Coffee Powder 200 g', 'Honey 500 g', 'Jam 500 g'
+      ]
+    },
+    {
+      category: 'Snacks & Beverages',
+      items: [
+        'Biscuits (Parle-G) 1 packet', 'Biscuits (Bourbon) 1 packet',
+        'Namkeen (Sev/Mixture) 500 g', 'Potato Chips 1 packet', 'Instant Noodles 1 packet',
+        'Pasta 500 g', 'Soup Packets 4 pcs', 'Fruit Juice 1 L', 'Cold Drinks 2 L',
+        'Energy Drink 1 can', 'Coconut Water 1 L', 'Chocolate Bar 1 pc'
+      ]
+    },
+    {
+      category: 'Cleaning & Kitchen Hygiene',
+      items: [
+        'Dishwash Bar 1 pc', 'Dishwash Liquid 500 ml', 'Scrubber 2 pcs', 'Steel Scrubber 2 pcs',
+        'Kitchen Towels 5 pcs', 'Napkins 1 packet', 'Trash Bags (Medium) 1 roll',
+        'Trash Bags (Large) 1 roll', 'Surface Cleaner 1 L', 'Floor Cleaner 1 L',
+        'Hand Wash 500 ml', 'Garbage Bin Liners 1 pack', 'Aluminum Foil 1 roll',
+        'Cling Film 1 roll', 'Garbage Bin 1 pc'
+      ]
+    }
+  ];
+
   const DEMO = {
     identifier: 'demo@leelaprasadsupermarket.com',
     password: 'leelaprasad123'
@@ -94,6 +158,12 @@
   const signoutBtn = document.getElementById('signoutBtn');
   const openCart = document.getElementById('openCart');
 
+  /* Essentials */
+  const essentialsGrid = document.getElementById('essentialsGrid');
+  const checkAllBtn = document.getElementById('checkAllBtn');
+  const uncheckAllBtn = document.getElementById('uncheckAllBtn');
+  const addEssentialsToCart = document.getElementById('addEssentialsToCart');
+
   /* Cart drawer */
   const overlay = document.getElementById('overlay');
   const cartDrawer = document.getElementById('cartDrawer');
@@ -141,7 +211,10 @@
     cartDrawer.classList.remove('open');
     overlay.hidden = true;
 
-    if (name === 'home') renderProducts();
+    if (name === 'home') {
+      renderProducts();
+      renderEssentials();
+    }
     if (name === 'checkout') renderCheckoutSummary();
     if (name === 'confirmation') renderConfirmation();
   }
@@ -355,6 +428,32 @@
     headerCartCount.textContent = cartItemCount();
   }
 
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  function renderEssentials() {
+    essentialsGrid.innerHTML = ESSENTIALS.map(function (cat, ci) {
+      const itemsHtml = cat.items.map(function (item, ii) {
+        const id = 'ess-' + ci + '-' + ii;
+        return '<label class="essentials-item">' +
+          '<input type="checkbox" class="essentials-check" data-ci="' + ci + '" data-ii="' + ii + '" id="' + id + '">' +
+          '<span class="essentials-item__name">' + escapeHtml(item) + '</span>' +
+          '<span class="essentials-item__qty">1</span>' +
+          '</label>';
+      }).join('');
+      return '<div class="essentials-category">' +
+        '<div class="essentials-category__header" role="button" tabindex="0">' +
+        '<span class="essentials-category__title">' + escapeHtml(cat.category) + '</span>' +
+        '<span class="essentials-category__count">' + cat.items.length + ' items</span>' +
+        '</div>' +
+        '<div class="essentials-category__body">' + itemsHtml + '</div>' +
+        '</div>';
+    }).join('');
+  }
+
   function findCartIndex(id) {
     return state.cart.findIndex((i) => i.id === id);
   }
@@ -423,6 +522,42 @@
   closeCart.addEventListener('click', closeDrawer);
   overlay.addEventListener('click', closeDrawer);
 
+  checkAllBtn.addEventListener('click', function () {
+    essentialsGrid.querySelectorAll('.essentials-check').forEach(function (cb) {
+      cb.checked = true;
+    });
+  });
+
+  uncheckAllBtn.addEventListener('click', function () {
+    essentialsGrid.querySelectorAll('.essentials-check').forEach(function (cb) {
+      cb.checked = false;
+    });
+  });
+
+  addEssentialsToCart.addEventListener('click', function () {
+    const checked = essentialsGrid.querySelectorAll('.essentials-check:checked');
+    if (checked.length === 0) {
+      showAlert('Please check at least one item.', 'info');
+      return;
+    }
+    checked.forEach(function (cb) {
+      const ci = Number(cb.dataset.ci);
+      const ii = Number(cb.dataset.ii);
+      const item = ESSENTIALS[ci].items[ii];
+      const id = 'ess-' + ci + '-' + ii;
+      const idx = findCartIndex(id);
+      if (idx >= 0) {
+        state.cart[idx].qty += 1;
+      } else {
+        state.cart.push({ id: id, name: item, price: 0, qty: 1 });
+      }
+    });
+    renderProducts();
+    renderCart();
+    headerCartCount.textContent = cartItemCount();
+    showAlert(checked.length + ' item(s) added to cart.', 'success');
+  });
+
   function renderCart() {
     const hasItems = state.cart.length > 0;
     cartEmpty.hidden = hasItems;
@@ -435,7 +570,7 @@
     cartItems.innerHTML = state.cart.map(function (item) {
       return `
         <div class="cart-item">
-          <div class="cart-item__thumb" aria-hidden="true">${PRODUCTS.find((p) => p.id === item.id).emoji}</div>
+          <div class="cart-item__thumb" aria-hidden="true">${(PRODUCTS.find((p) => p.id === item.id) || { emoji: '🛒' }).emoji}</div>
           <div class="cart-item__info">
             <div class="cart-item__name">${item.name}</div>
             <div class="cart-item__price">${money(item.price)} each</div>
