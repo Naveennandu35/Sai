@@ -29,6 +29,32 @@
     password: 'leelaprasad123'
   };
 
+  /* ── Registered users (demo database) ───────────────────── */
+
+  const USERS = [
+    { name: 'Demo User', email: 'demo@leelaprasadsupermarket.com', phone: '9876543210', password: 'leelaprasad123' },
+    { name: 'Leela Prasad', email: 'leela@leelaprasadsupermarket.com', phone: '9123456780', password: 'leela123' },
+    { name: 'Prasad K', email: 'prasad.k@example.com', phone: '9988776655', password: 'prasad123' },
+    { name: 'Sita R', email: 'sita.r@example.com', phone: '9001122334', password: 'sita123' }
+  ];
+
+  function findUserByIdentifier(value) {
+    const normalized = value.replace(/[\s()-]/g, '');
+    return USERS.find((u) =>
+      u.email.toLowerCase() === value.toLowerCase() ||
+      u.phone === normalized
+    );
+  }
+
+  function validateEmail(email) {
+    return EMAIL_RE.test(email);
+  }
+
+  function validatePhone(phone) {
+    const digits = phone.replace(/[\s()-]/g, '');
+    return PHONE_RE.test(digits);
+  }
+
   /* ── App state ──────────────────────────────────────────── */
 
   const state = {
@@ -140,15 +166,29 @@
 
   function validateIdentifier() {
     const value = identifier.value.trim();
+
     if (!value) {
       return setError(idField, idError, 'Enter your email address or mobile number.');
     }
-    if (value.includes('@') && !EMAIL_RE.test(value)) {
-      return setError(idField, idError, 'That email address doesn’t look right.');
+
+    const isEmail = value.includes('@');
+
+    if (isEmail) {
+      if (!validateEmail(value)) {
+        return setError(idField, idError, 'Enter a valid email address (e.g. name@example.com).');
+      }
+    } else {
+      if (!validatePhone(value)) {
+        return setError(idField, idError, 'Enter a valid mobile number (7–15 digits).');
+      }
     }
-    if (!value.includes('@') && !PHONE_RE.test(value.replace(/[\s()-]/g, ''))) {
-      return setError(idField, idError, 'Enter a valid email or a 7–15 digit mobile number.');
+
+    // Check against registered users
+    const user = findUserByIdentifier(value);
+    if (!user) {
+      return setError(idField, idError, 'No account found with this email or mobile number.');
     }
+
     return setError(idField, idError, '');
   }
 
@@ -256,9 +296,16 @@
     // Simulate network round-trip, then open the store.
     window.setTimeout(function () {
       setLoading(false);
-      const name = identifier.value.trim().split('@')[0];
-      state.user = { name, email: identifier.value.trim() };
-      userDisplayName.textContent = name.charAt(0).toUpperCase() + name.slice(1);
+
+      const user = findUserByIdentifier(identifier.value.trim());
+      if (!user || user.password !== password.value) {
+        showAlert('Invalid email/mobile or password. Try again.', 'error');
+        password.focus();
+        return;
+      }
+
+      state.user = { name: user.name, email: user.email, phone: user.phone };
+      userDisplayName.textContent = user.name;
       localStorage.setItem('leelaprasad:lastUser', identifier.value.trim());
       showView('home');
     }, 900);
