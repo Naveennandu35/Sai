@@ -1,5 +1,5 @@
 /* ============================================================
-   Sunrise Mart — login page behaviour
+   LeelaPrasad Super Market — login page behaviour
    Front-end demo only: no credentials are sent anywhere.
    ============================================================ */
 
@@ -26,8 +26,8 @@
   const PHONE_RE = /^\+?\d{7,15}$/;
 
   const DEMO = {
-    identifier: 'demo@sunrisemart.com',
-    password: 'sunrise123'
+    identifier: 'demo@leelaprasadsupermarket.com',
+    password: 'leelaprasad123'
   };
 
   /* ── Alerts ─────────────────────────────────────────────── */
@@ -192,9 +192,9 @@
   function persistHint() {
     try {
       if (remember.checked) {
-        window.localStorage.setItem('sunrise:lastUser', identifier.value.trim());
+        window.localStorage.setItem('leelaprasad:lastUser', identifier.value.trim());
       } else {
-        window.localStorage.removeItem('sunrise:lastUser');
+        window.localStorage.removeItem('leelaprasad:lastUser');
       }
     } catch (err) {
       /* storage can be blocked — not critical */
@@ -203,7 +203,7 @@
 
   /* Restore the last remembered username */
   try {
-    const lastUser = window.localStorage.getItem('sunrise:lastUser');
+    const lastUser = window.localStorage.getItem('leelaprasad:lastUser');
     if (lastUser) {
       identifier.value = lastUser;
       remember.checked = true;
